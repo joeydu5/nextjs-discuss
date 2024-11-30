@@ -26,6 +26,7 @@ export const {
   ],
   callbacks: {
     //usually not needed, here we are fixing a bug in nextauth
+    /* tslint:disable-next-line */
     async session({ session, user }: any) {
       if (session && user) {
         session.user.id = user.id;
