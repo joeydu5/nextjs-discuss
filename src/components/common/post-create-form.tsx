@@ -13,10 +13,17 @@ import * as actions from "@/actions";
 import FormButton from "./form-button";
 import { div } from "framer-motion/client";
 
-const PostCreateForm = () => {
-  const [formState, action, isPending] = useActionState(actions.createPost, {
-    errors: {},
-  });
+interface PostCreateFormProps {
+  slug: string;
+}
+
+const PostCreateForm = ({ slug }: PostCreateFormProps) => {
+  const [formState, action, isPending] = useActionState(
+    actions.createPost.bind(null, slug),
+    {
+      errors: {},
+    }
+  );
   return (
     <Popover placement="left">
       <PopoverTrigger>
