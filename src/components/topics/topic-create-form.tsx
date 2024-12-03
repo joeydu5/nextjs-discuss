@@ -10,9 +10,10 @@ import {
   PopoverContent,
 } from "@nextui-org/react";
 import * as actions from "../../actions";
+import FormButton from "../common/form-button";
 
 const TopicCreateForm = () => {
-  const [formState, action] = useActionState(actions.createTopic, {
+  const [formState, action, isPending] = useActionState(actions.createTopic, {
     errors: {},
   });
 
@@ -54,7 +55,8 @@ const TopicCreateForm = () => {
                 {formState.errors._form?.join(",")}
               </div>
             ) : null}
-            <Button type="submit">Submit</Button>
+
+            <FormButton isLoading={isPending}>Save</FormButton>
           </div>
         </form>
       </PopoverContent>
